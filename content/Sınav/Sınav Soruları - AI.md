@@ -1,4 +1,4 @@
-# 🤖 AI'ın Önerdiği Sorular (45 Soru)
+# 🤖 AI'ın Önerdiği Sorular (55 Soru)
 > Ders içeriğine dayalı, sınavda çıkabilecek ek sorular. Detaylı teknik açıklamalar içerir.
 
 🏠 [[🏠 Ana Sayfa]] | Hoca soruları → [[Sınav Soruları - Hoca]]
@@ -596,3 +596,152 @@ kareler(5)
 # 4^2 = 16
 # 5^2 = 25
 ```
+
+---
+
+## BÖLÜM F — 🪤 Tuzaklı Sorular (Dikkat!)
+
+> Bu sorular sınavda sizi yanıltmak için tasarlanmış tarzda. Hoca bu tarz örnekleri seviyor.
+
+---
+
+**S46. Çıktı ne olur?**
+```python
+x = "5"
+y = 3
+print(x * y)
+```
+**Cevap:** `555`
+- ⚠️ TUZAK: `x` string! `"5" * 3` → string'i 3 kez tekrarlar.
+- `5 * 3 = 15` DEĞİL! Tip dönüşümü yapılmadı.
+
+---
+
+**S47. Bu kod hata verir mi?**
+```python
+x = 10
+if x > 5:
+    print("Büyük")
+    print("devam")
+print("bitti")
+```
+**Cevap:** Hata vermez. Çıktı:
+```
+Büyük
+devam
+bitti
+```
+- ⚠️ TUZAK: `print("bitti")` if'in **dışında** — girintisi yok. Her durumda çalışır.
+
+---
+
+**S48. Çıktı ne olur?**
+```python
+for i in range(5):
+    pass
+print(i)
+```
+**Cevap:** `4`
+- ⚠️ TUZAK: `pass` hiçbir şey yapmaz ama `i` değişkeni hâlâ son değerini tutar.
+- `range(5)` → son değer 4.
+
+---
+
+**S49. Çıktı ne olur?**
+```python
+print(10 / 5)
+```
+**Cevap:** `2.0` (**2 değil!**)
+- ⚠️ TUZAK: `/` operatörü **her zaman float** döner. `2` değil `2.0`.
+- `int` sonuç istiyorsan `//` kullan: `10 // 5` → `2`
+
+---
+
+**S50. Bu iki kod aynı sonucu verir mi?**
+```python
+# Kod 1
+x = 5
+if x > 3:
+    print("A")
+if x > 1:
+    print("B")
+
+# Kod 2
+x = 5
+if x > 3:
+    print("A")
+elif x > 1:
+    print("B")
+```
+**Cevap:** Hayır!
+- **Kod 1:** İki ayrı `if` → ikisi de kontrol edilir → `A` ve `B` yazdırır
+- **Kod 2:** `elif` kullanılmış → ilk doğru olan çalışır → sadece `A` yazdırır
+- ⚠️ TUZAK: `if-if` ile `if-elif` farklı çalışır!
+
+---
+
+**S51. Bu kodda mantık hatası var mı?**
+```python
+toplam = 0
+for i in range(1, 11):
+    toplam += 1
+print("1-10 toplamı:", toplam)
+```
+**Cevap:** Evet! Çıktı `10` verir, `55` değil.
+- ⚠️ TUZAK: `toplam += 1` yazılmış, `toplam += i` olmalıydı!
+- Bu bir **mantık hatası** — program çalışır ama yanlış sonuç verir. Yorumlayıcı fark etmez.
+
+---
+
+**S52. Çıktı ne olur?**
+```python
+def topla(a, b):
+    c = a + b
+
+sonuc = topla(3, 5)
+print(sonuc)
+```
+**Cevap:** `None`
+- ⚠️ TUZAK: `return` yok! Fonksiyon hesaplıyor ama sonucu **döndürmüyor**.
+- `c = a + b` yerel kalır, dışarıya çıkmaz.
+
+---
+
+**S53. `range(1, 1)` kaç kez döner?**
+
+**Cevap:** **0 kez** (hiç dönmez)
+- ⚠️ TUZAK: Başlangıç = bitiş olunca döngü hiç çalışmaz.
+- Benzer: `range(5, 3)` → hiç çalışmaz (artım pozitif ama bitiş < başlangıç)
+
+---
+
+## BÖLÜM G — Eksik Konular (Düşük olasılıklı ama hocanın bahsettiği)
+
+---
+
+**S54. `format()` metodu nedir? Örnek verin.**
+
+**Cevap:** Metin içine değişken yerleştirmek için kullanılır:
+```python
+print("{} {} yaşında".format("Ali", 20))
+# → Ali 20 yaşında
+
+# Sıra numarası ile
+print("{1} ve {0}".format("A", "B"))
+# → B ve A
+```
+> 💡 Sınavda çıkma olasılığı düşük — f-string daha yaygın. Ama hoca Hafta 7'de anlattı.
+
+---
+
+**S55. `0.1 + 0.2 == 0.3` sonucu nedir? Neden?**
+
+**Cevap:** `False`!
+```python
+print(0.1 + 0.2)        # 0.30000000000000004
+print(0.1 + 0.2 == 0.3) # False
+```
+- Bilgisayar ikilik (binary) sistemde çalışır, bazı ondalıklı sayılar tam temsil edilemez.
+- Çözüm: `round(0.1 + 0.2, 1) == 0.3` → `True`
+> 💡 Sınavda çıkma olasılığı düşük ama hoca Hafta 6'da bu konudan bahsetti.
+

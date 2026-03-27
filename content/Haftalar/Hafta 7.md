@@ -61,6 +61,28 @@ print(saat, ":", dakika, ":", kalan_sn)
 
 ---
 
+## format() Metodu (Hocanın anlattığı)
+
+> Hoca: "Format metodunu bilmek gerekiyor, çıktıyı düzgün biçimlendirmek için kullanılır."
+
+```python
+# Eski stil: .format()
+print("{} {} yaşında".format("Ali", 20))
+# → Ali 20 yaşında
+
+# Birden fazla değer
+print("{} {} seviyor".format("Ahmet", "futbolu"))
+
+# Sıra numarası ile
+print("{0} ve {1}".format("A", "B"))   # A ve B
+print("{1} ve {0}".format("A", "B"))   # B ve A
+```
+
+> 💡 Yeni Python'da `f-string` daha pratik: `f"Ali {yas} yaşında"`  
+> Ama hoca `format()` metodunu derste anlattı.
+
+---
+
 ## Bağlantılı Konular
 - [[Konular/Döngüler (for-while)]]
 - [[Hafta 9]] ← while döngüsü

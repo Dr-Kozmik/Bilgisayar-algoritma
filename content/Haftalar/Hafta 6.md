@@ -63,6 +63,25 @@ else:
 
 ---
 
+## ⚠️ Float Eşitlik Sorunu (Kayan Nokta Hassasiyeti)
+
+> Hoca bu konuya Hafta 6'da değindi: "Bilgisayar ikilik sistemde çalıştığı için bazı ondalıklı sayı karşılaştırmaları beklenmedik sonuç verebilir."
+
+```python
+# Beklenti: True ama sonuç False!
+print(0.1 + 0.2 == 0.3)    # False ❌
+
+# Neden?
+print(0.1 + 0.2)            # 0.30000000000000004
+
+# Çözüm: round() ile karşılaştır
+print(round(0.1 + 0.2, 1) == 0.3)   # True ✅
+```
+
+> 💡 Sınavda çıkma olasılığı düşük ama hocanın bahsettiği bir konu.
+
+---
+
 ## Bağlantılı Konular
 - [[Konular/Koşul Yapıları (if-elif-else)]]
 - [[Hafta 7]] ← for döngüsü
